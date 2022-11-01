@@ -223,7 +223,13 @@ class USBDriveReaderCopy(object):
         if self._mounter.poll_changes() and self._mounter.has_nodes():
             return True
         else:
-            return False
+        """Return true if the number of files in the paths have changed."""
+            current_count = self.count_files()
+            if current_count != self._filecount:
+                self._filecount = current_count
+                return True
+            else:
+                return False
 
     def idle_message(self):
         """Return a message to display when idle and no files are found."""
