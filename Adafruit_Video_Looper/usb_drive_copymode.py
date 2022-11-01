@@ -223,7 +223,7 @@ class USBDriveReaderCopy(object):
         if self._mounter.poll_changes() and self._mounter.has_nodes():
             return True
         else:
-        """Return true if the number of files in the paths have changed."""
+            """Return true if the number of files in the paths have changed."""
             current_count = self.count_files()
             if current_count != self._filecount:
                 self._filecount = current_count
